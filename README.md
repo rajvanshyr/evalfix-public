@@ -221,3 +221,13 @@ evalfix fix my-agent/
 # Ingested 3 production failures from evalfix-sdk.
 # Running 11 tests...
 ```
+
+---
+
+## Roadmap
+
+- **Stronger optimization** — more reliable multi-iteration fixing, better root cause diagnosis
+- **More graders** — `exact_match`, `json_schema`, custom grader support
+- **CI/CD integrations** — GitHub Actions, Slack/email alerts on failure spikes
+- **Web dashboard** — team-friendly UI for running evals and tracking trends
+- **Agentic support** — eval multi-turn and tool-calling workflows
