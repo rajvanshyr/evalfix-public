@@ -1,0 +1,29 @@
+tests:
+  - id: termination_notice
+    input: "Either party may terminate this agreement upon 30 days written notice to the other party."
+    expected: "termination_notice_days should be 30"
+    grader: contains
+    expected_output: "30"
+
+  - id: liability_cap
+    input: "In no event shall either party's total liability arising out of this agreement exceed fifty thousand dollars ($50,000)."
+    expected: "Should extract the liability cap amount"
+    grader: contains
+    expected_output: "50,000"
+
+  - id: governing_law
+    input: "This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware."
+    expected: "Should extract Delaware as the governing law"
+    grader: contains
+    expected_output: "Delaware"
+
+  - id: auto_renewal
+    input: "This agreement shall automatically renew for successive one-year terms unless either party provides written notice of non-renewal at least 60 days prior to the end of the then-current term."
+    expected: "auto_renews should be true"
+    grader: contains
+    expected_output: "true"
+
+  - id: material_breach_termination
+    input: "Either party may terminate this Agreement immediately upon written notice if the other party commits a material breach. For non-material breaches, the breaching party shall have fifteen (15) business days following written notice to cure the breach, after which the non-breaching party may elect to terminate."
+    expected: "termination_notice_days must be null or 0 — termination for material breach is immediate. The 15 days is a cure period for non-material breaches, not a termination notice requirement. Must not return 15 as termination_notice_days."
+    grader: semantic

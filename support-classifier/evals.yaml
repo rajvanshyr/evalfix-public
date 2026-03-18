@@ -1,0 +1,29 @@
+tests:
+  - id: clear_bug_report
+    input: "My API key stopped working after I upgraded to v2.0 yesterday. Getting 401 errors on every request."
+    expected: "Should classify as a bug with high priority"
+    grader: contains
+    expected_output: '"bug"'
+
+  - id: how_to_question
+    input: "How do I export my project data to a CSV file?"
+    expected: "Should classify as how_to with low priority"
+    grader: contains
+    expected_output: '"how_to"'
+
+  - id: billing_issue
+    input: "I was charged twice this month for my Pro subscription. I only have one account."
+    expected: "Should classify as billing"
+    grader: contains
+    expected_output: '"billing"'
+
+  - id: feature_request
+    input: "It would be great if you added Slack notifications when a build completes."
+    expected: "Should classify as feature_request with low priority"
+    grader: contains
+    expected_output: '"feature_request"'
+
+  - id: non_english_input
+    input: "Ich kann mich nicht einloggen. Die Seite zeigt einen Fehler 403."
+    expected: "Must respond with valid JSON using English values for category and priority, regardless of the language of the input. Category should be 'bug' and priority should be 'high'."
+    grader: semantic

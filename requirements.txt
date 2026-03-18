@@ -1,0 +1,10 @@
+flask
+flask-sqlalchemy
+flask-migrate
+anthropic
+python-dotenv
+gunicorn
+click
+rich
+pyyaml
+psycopg2-binary

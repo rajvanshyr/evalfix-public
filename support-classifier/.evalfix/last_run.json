@@ -1,0 +1,11 @@
+{
+  "test_run_id": "4b1b9d3e-2268-4a98-80ae-a69ee4653046",
+  "version_id": "e1fdb771-4482-4a42-9056-a785830e6166",
+  "project_id": "1385d0a7-9024-4f6b-b136-82d2fb300c4f",
+  "prompt_id": "19894c9f-8d21-4b71-96b2-5a74343a143b",
+  "pass_count": 4,
+  "fail_count": 1,
+  "total_count": 5,
+  "avg_score": 0.8,
+  "completed_at": "2026-03-16T16:29:30.059347"
+}

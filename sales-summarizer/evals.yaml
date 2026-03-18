@@ -1,0 +1,45 @@
+tests:
+  - id: explicit_next_steps
+    input: |
+      Rep: Great call today. So to recap — I'll send you the pricing breakdown by Thursday, and you'll loop in your CTO for a technical review next week?
+      Prospect: Exactly. Send it to the same email and we'll schedule a follow-up for the 24th.
+      Rep: Perfect. Talk soon.
+    expected: "next_steps should include sending pricing breakdown by Thursday and scheduling a follow-up on the 24th"
+    grader: semantic
+
+  - id: pain_points_captured
+    input: |
+      Prospect: Our biggest problem right now is that our current tool doesn't integrate with Salesforce, so the team is doing a ton of manual data entry. It's killing productivity.
+      Rep: That's a common pain point. How long has this been an issue?
+      Prospect: About six months since we migrated to Salesforce. We also have no visibility into which campaigns are actually driving pipeline.
+    expected: "pain_points should include Salesforce integration gap and lack of campaign attribution / pipeline visibility"
+    grader: semantic
+
+  - id: evaluation_stage
+    input: |
+      Prospect: We're currently evaluating three vendors this quarter — you, Competitor A, and Competitor B. We have a decision committee that meets in 6 weeks.
+      Rep: Understood. What are the top criteria you're scoring against?
+      Prospect: Ease of integration, pricing, and support response time.
+    expected: "deal_stage should be evaluation"
+    grader: contains
+    expected_output: "evaluation"
+
+  - id: negotiation_stage
+    input: |
+      Prospect: We're ready to move forward. I'm looping in our legal team and procurement this week to review the contract terms.
+      Rep: Great. We can be flexible on the payment schedule if that helps procurement.
+      Prospect: Good to know. Expect redlines back within 5 business days.
+    expected: "deal_stage should be negotiation"
+    grader: contains
+    expected_output: "negotiation"
+
+  - id: polite_decline_closed_lost
+    input: |
+      Rep: So after seeing the demo, what are your thoughts?
+      Prospect: Honestly, it's impressive — but we just signed a three-year renewal with our current vendor last month. We're locked in and I can't justify switching now.
+      Rep: I completely understand. If things change, we'd love to stay in touch.
+      Prospect: Of course. Go ahead and send me your info and I'll keep you on file.
+      Rep: Will do. I'll send over our one-pager this afternoon.
+      Prospect: Sounds good. Thanks for the demo.
+    expected: "deal_stage must be closed_lost — the prospect explicitly stated they are locked into a competitor contract for three years and cannot switch. Staying in touch does not make this an active opportunity."
+    grader: semantic
